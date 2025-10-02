@@ -13,6 +13,12 @@ $result = mysqli_query($conn, $sql);
 <body>
     <h2>DEMONSTRATIVO DE RENDIMENTOS MENSAIS</h2>
 
+    <text>Digite o nome do funcionário:</text> 
+    <input type="text" name="campo_procurar">
+    <INPUT TYPE="submit" name="bt_filtrar" VALUE="FILTRAR">
+    <INPUT TYPE="submit" name="bt_voltar" VALUE="VOLTAR">
+    </br>
+
     <table border="1">
         <tr>
             <th>Nº Registro</th>
