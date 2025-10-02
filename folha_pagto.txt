@@ -1,0 +1,64 @@
+--Banco para adicionar no phpMyAdmin
+
+-- phpMyAdmin SQL Dump
+-- version 5.1.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Tempo de geração: 02-Out-2025 às 19:34
+-- Versão do servidor: 5.7.36
+-- versão do PHP: 8.1.3
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Banco de dados: `folha_pagto`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tb_funcionarios`
+--
+
+CREATE TABLE `tb_funcionarios` (
+  `N_registro` int(6) NOT NULL,
+  `Nome_Funcionario` text NOT NULL,
+  `data_admissao` date NOT NULL,
+  `cargo` enum('Analista fiscal','Gestor de projetos','Auxiliar administrativo','Operador logistico','SAC') NOT NULL,
+  `qtde_salarios` int(10) NOT NULL,
+  `salario_bruto` int(10) NOT NULL,
+  `inss` text NOT NULL,
+  `salario_liquido` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tb_funcionarios`
+--
+
+INSERT INTO `tb_funcionarios` (`N_registro`, `Nome_Funcionario`, `data_admissao`, `cargo`, `qtde_salarios`, `salario_bruto`, `inss`, `salario_liquido`) VALUES
+(2, 'fulano', '2025-10-01', 'Analista fiscal', 1, 1412, 'Isento', 1412),
+(88, 'ciclano', '2025-10-01', 'Analista fiscal', 7, 9884, 'R$ 1.087,24', 8797);
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices para tabela `tb_funcionarios`
+--
+ALTER TABLE `tb_funcionarios`
+  ADD PRIMARY KEY (`N_registro`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
