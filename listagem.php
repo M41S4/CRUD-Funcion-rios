@@ -1,8 +1,20 @@
 <?php
 include("conexao.php");
 
-$sql = "SELECT * FROM tb_funcionarios";
+if (isset($_GET['bt_filtrar'])) {
+    $pesquisa = $_GET['campo_procurar'];
+    $sql = "SELECT * FROM tb_funcionarios 
+            WHERE Nome_Funcionario LIKE '%$pesquisa%'";
+} else {
+    $sql = "SELECT * FROM tb_funcionarios";
+}
+
 $result = mysqli_query($conn, $sql);
+
+if (isset($_GET['bt_voltar'])) {
+    header("Location: listagem.php"); 
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -13,11 +25,14 @@ $result = mysqli_query($conn, $sql);
 <body>
     <h2>DEMONSTRATIVO DE RENDIMENTOS MENSAIS</h2>
 
-    <text>Digite o nome do funcionário:</text> 
-    <input type="text" name="campo_procurar">
-    <INPUT TYPE="submit" name="bt_filtrar" VALUE="FILTRAR">
-    <INPUT TYPE="submit" name="bt_voltar" VALUE="VOLTAR">
-    </br>
+    <form method="GET" action="listagem.php">
+    <label>Digite o nome do funcionário:</label> 
+    <input type="text" name="campo_procurar" 
+    value="
+    <?php if(isset($_GET['campo_procurar'])) echo $_GET['campo_procurar']; ?>">
+    <input type="submit" name="bt_filtrar" value="FILTRAR">
+    <input type="submit" name="bt_voltar" value="VOLTAR">
+    </form>
 
     <table border="1">
         <tr>
